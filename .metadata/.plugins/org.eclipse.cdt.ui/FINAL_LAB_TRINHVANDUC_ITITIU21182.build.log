@@ -1,0 +1,23 @@
+15:33:35 **** Incremental Build of configuration Debug for project FINAL_LAB_TRINHVANDUC_ITITIU21182 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/fsm_simple_buttons_run.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/fsm_simple_buttons_run.d" -MT"Core/Src/fsm_simple_buttons_run.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/fsm_simple_buttons_run.o"
+arm-none-eabi-gcc -o "FINAL_LAB_TRINHVANDUC_ITITIU21182.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\PC\OneDrive\YEAR3-SEMESTER2\Micro-processing\PROJECTS\Final-lab\FINAL_LAB_TRINHVANDUC_ITITIU21182\STM32F103C6UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="FINAL_LAB_TRINHVANDUC_ITITIU21182.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: FINAL_LAB_TRINHVANDUC_ITITIU21182.elf
+ 
+arm-none-eabi-size   FINAL_LAB_TRINHVANDUC_ITITIU21182.elf 
+arm-none-eabi-objdump -h -S  FINAL_LAB_TRINHVANDUC_ITITIU21182.elf  > "FINAL_LAB_TRINHVANDUC_ITITIU21182.list"
+arm-none-eabi-objcopy  -O ihex  FINAL_LAB_TRINHVANDUC_ITITIU21182.elf  "FINAL_LAB_TRINHVANDUC_ITITIU21182.hex"
+   text	   data	    bss	    dec	    hex	filename
+   8544	     76	   1724	  10344	   2868	FINAL_LAB_TRINHVANDUC_ITITIU21182.elf
+arm-none-eabi-objcopy  -O binary  FINAL_LAB_TRINHVANDUC_ITITIU21182.elf  "FINAL_LAB_TRINHVANDUC_ITITIU21182.bin"
+Finished building: default.size.stdout
+ 
+Finished building: FINAL_LAB_TRINHVANDUC_ITITIU21182.hex
+Finished building: FINAL_LAB_TRINHVANDUC_ITITIU21182.bin
+ 
+ 
+Finished building: FINAL_LAB_TRINHVANDUC_ITITIU21182.list
+ 
+
+15:33:35 Build Finished. 0 errors, 0 warnings. (took 741ms)
+

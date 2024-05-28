@@ -1,0 +1,66 @@
+#include <fsm_simple_buttons_run.h>
+
+int n = 0;
+int previous_n = 0;
+int countdown_timer = 10; // Initial countdown timer value
+
+void resetCounter(){
+    if (n > 9) n = 0;
+    if (n < 0) n = 9;
+}
+
+void fsm_simple_buttons_run(){
+    if (is_button_pressed(0) == 1){
+        n = 0;
+        countdown_timer = 10; // Reset the countdown timer
+    }
+
+    if (is_long_button_flag(1) == 1){
+        resetCounter(++n);
+        countdown_timer = 10; // Reset the countdown timer
+    }
+
+    if (is_long_button_flag(2) == 1){
+        resetCounter(--n);
+        countdown_timer = 10; // Reset the countdown timer
+    }
+
+    if (is_button_pressed(1) == 1){
+        resetCounter(n++);
+        countdown_timer = 10; // Reset the countdown timer
+    }
+
+    if (is_button_pressed(2) == 1){
+        resetCounter(n--);
+        countdown_timer = 10; // Reset the countdown timer
+    }
+
+    // Countdown timer logic
+    if (countdown_timer > 0) {
+        countdown_timer--; // Decrement the countdown timer
+        if (countdown_timer == 0) {
+            previous_n = n; // Store the current value of n
+            n = 0; // Reset n to 0
+        }
+    }
+
+    if (is_button_pressed(1) == 1 || is_button_pressed(2) == 1) {
+        n = previous_n; // Restore the previous value of n
+        countdown_timer = 10; // Reset the countdown timer
+        if (is_button_pressed(1) == 1) {
+            resetCounter(n++);
+        }
+        if (is_button_pressed(2) == 1) {
+            resetCounter(n--);
+        }
+    }
+
+    if (timer0_flag == 1){
+        HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
+        setTimer0(100);
+    }
+    if (timer1_flag == 1){
+        display7SEG(n);
+        setTimer1(1);
+    }
+}
